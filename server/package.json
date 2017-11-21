@@ -1,0 +1,48 @@
+{
+  "name": "typescript-presentation-server",
+  "version": "1.0.0",
+  "description": "The server portion of the TypeScript presentation.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertbullen/typescript-presentation.git"
+  },
+  "main": "./dist/src/server.js",
+  "scripts": {
+    "install-ssl-files": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -batch -nodes -subj \"/C=US/ST=Minnesota/L=Eagan/O=None/CN=www.example.com\"",
+    "postinstall": "npm run install-ssl-files",
+    "clean": "find ./dist -name '*.js' -delete",
+    "build": "tsc",
+    "rebuild": "npm run clean && npm run build",
+    "debug": "node debug ./dist/server/src/server.js",
+    "start": "node ./dist/server/src/server.js",
+    "restart": "npm run rebuild && npm start",
+    "test": "jest ./dist",
+    "retest": "npm run rebuild && npm test",
+    "tsc": "tsc"
+  },
+  "author": {
+    "name": "Robert Bullen",
+    "email": "robert@robertbullen.com"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@types/get-stream": "^3.0.1",
+    "cached-request": "^1.1.2",
+    "connect-logger": "0.0.1",
+    "express": "^4.16.2",
+    "fs-extra-promise": "^0.4.1",
+    "get-stream": "^3.0.0",
+    "jest": "^21.2.1",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.5",
+    "tslib": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.39",
+    "@types/fs-extra-promise": "^1.0.3",
+    "@types/jest": "^21.1.6",
+    "@types/request": "^2.0.7",
+    "@types/request-promise-native": "^1.0.10",
+    "typescript": "^2.6.1"
+  }
+}

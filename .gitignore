@@ -1,0 +1,9 @@
+client/dist/
+client/node_modules/
+client/typings/
+
+server/.cache/
+server/dist/
+server/node_modules/
+server/typings/
+server/*.pem

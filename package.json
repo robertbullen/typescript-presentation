@@ -1,0 +1,25 @@
+{
+  "name": "typescript-presentation",
+  "version": "1.0.0",
+  "description": "A client & server application that give a Reveal.js-based TypeScript presentation.",
+  "scripts": {
+    "install-client": "pushd ./client && npm install && popd",
+    "install-server": "pushd ./server && npm install && popd",
+    "install": "npm run install-server && npm run install-client",
+    "clean-client": "pushd ./client && npm run clean && popd",
+    "clean-server": "pushd ./server && npm run clean && popd",
+    "clean": "npm run clean-server && npm run clean-client",
+    "build-client": "pushd ./client && npm run build && popd",
+    "build-server": "pushd ./server && npm run build && popd",
+    "build": "npm run build-server && npm run build-client",
+    "rebuild": "npm run clean && npm run build",
+    "start-client": "pushd ./client && npm start && popd",
+    "start-server": "pushd ./server && npm start && popd",
+    "start": "npm run start-server && npm run start-client"
+  },
+  "author": {
+    "name": "Robert Bullen",
+    "email": "robert@robertbullen.com"
+  },
+  "license": "UNLICENSED"
+}
