@@ -6,8 +6,10 @@ import * as path          from 'path';
 
 import {languagesUrl} from '../../common/src/languages';
 
-import {CachingProxyService} from './caching-proxy';
-import {LanguagesService}    from './languages-service';
+import * as config        from './config';
+import {rules}            from './content-rewriting-rules';
+import {LanguagesService} from './languages-service';
+import {ProxyService}     from './proxy-service';
 
 //---------------------------------------------
 // Create and Configure the Express Application
@@ -19,20 +21,22 @@ const application: express.Application = express();
 // Register helpful third party middleware.
 application.use(connectLogger());
 
-// Register middleware for proxying and caching external resources.
-const cachingProxyService: CachingProxyService = (() => {
-    const routeBase: string = '/~/';
-    const directoryPath: string = '.cache';
-    const maxAgeMilliseconds: number = 7 * 24 * 60 * 60 * 1000;
-    return new CachingProxyService(routeBase, directoryPath, maxAgeMilliseconds);
-})();
-cachingProxyService.registerMiddleware(application);
+// Register middleware for proxying (and caching and rewriting) external resources.
+const proxyService = new ProxyService(
+    config.routeBase,
+    config.cacheDirectoryPath,
+    config.beforeAndAfterDirectoryPath,
+    config.maxAgeMilliseconds,
+    rules,
+    config.preserveContentEncoding
+);
+proxyService.registerMiddleware(application);
 
 // Register middleware for the languages endpoint.
 const languagesService: LanguagesService = (() => {
     function getLanguagesMarkdown(): Promise<string> {
         const languagesMarkdownSourceUrl: string = 'https://raw.githubusercontent.com/wiki/jashkenas/coffeescript/List-of-languages-that-compile-to-JS.md';
-        return cachingProxyService.requestAsPromise(languagesMarkdownSourceUrl);
+        return proxyService.requestAsPromise(languagesMarkdownSourceUrl);
     }
     return new LanguagesService(getLanguagesMarkdown, languagesUrl);
 })();
@@ -56,6 +60,8 @@ application.use('/', express.static(projectRootDir));
 //--------------------------------
 
 // Load the SSL private key and certificate from disk.
+console.group('Loading HTTPS resources');
+
 const certFilePath: string = path.join(process.cwd(), 'cert.pem');
 console.log(`Using certificate at '${certFilePath}'`);
 
@@ -66,6 +72,8 @@ const httpsOptions = {
     cert: fs.readFileSync(certFilePath),
     key: fs.readFileSync(keyFilePath)
 }
+
+console.groupEnd();
 
 // Use either the PORT environment variable or a reasonable default.
 const port: number = Number.parseInt(process.env.PORT || '8443');

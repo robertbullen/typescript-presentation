@@ -6,8 +6,9 @@ This project is a slide show that introduces the TypeScript programming language
 
 ## Getting Started
 
-1. Install [Node.js](https://nodejs.org/).
-1. Clone [this git repository](https://github.com/robertbullen/typescript-presentation) by executing `git clone https://github.com/robertbullen/typescript-presentation.git`.
+1. Install [Node.js](https://nodejs.org/) v8.9.1 or higher (`console.group()` and `console.groupEnd()` are the requirements that push this project to such a recent version).
+1. Clone [this git repository](https://bitbucket.bcbsmn.com/projects/DEMOS/repos/typescript-presentation/browse).
 1. Open a command prompt and navigate to the directory in which you cloned the repository.
 1. Execute `npm install`.
 1. Execute `npm start`.
+
