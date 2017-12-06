@@ -12,7 +12,7 @@ const fileName: string = __filename.substring(__filename.lastIndexOf('.'));
 describe(fileName, () => {
     let markdown: string = '';
     beforeAll(() => {
-        const markdownFilePath: string = path.join(process.cwd(), 'src/list-of-languages.test.md');
+        const markdownFilePath: string = path.join(process.cwd(), 'src/languages-markdown-parser.test.md');
         markdown = fs.readFileSync(markdownFilePath, 'utf8');
     });
 

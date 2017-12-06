@@ -9,6 +9,21 @@ import * as url           from 'url';
 import * as zlib          from 'zlib';
 
 import * as contentRewriting from './content-rewriting';
+import * as remoteResource   from './remote-resource';
+
+export interface ProxyConfig {
+    routeBase: string;
+    refererQueryParam: string;
+    cache: {
+        directoryPath: string;
+        maxAgeMilliseconds: number;
+    };
+    rewrites: {
+        rules: ReadonlyArray<contentRewriting.Rule>;
+        directoryPath: string;
+        recompress: boolean;
+    };
+}
 
 /**
  * Implements a caching proxy for external resources so that the presentation isn't dependent on an active network
@@ -18,26 +33,28 @@ import * as contentRewriting from './content-rewriting';
  */
 export class ProxyService {
     private readonly cachedRequest: cachedRequest.CachedRequest;
+    private readonly remoteResourceCodec: remoteResource.Codec;
 
-    public constructor(
-        private readonly routeBase: string,
-        private readonly cacheDirectoryPath: string,
-        private readonly beforeAndAfterDirectoryPath: string,
-        maxAgeMilliseconds: number,
-        private readonly contentRewritingRules: ReadonlyArray<contentRewriting.Rule>,
-        private readonly preserveContentEncoding: boolean
-    ) {
-        // Create and configure the caching requestor.
+    public constructor(private readonly config: ProxyConfig) {
         this.cachedRequest = cachedRequest(request);
-        this.cachedRequest.setCacheDirectory(cacheDirectoryPath);
-        this.cachedRequest.setValue('ttl', maxAgeMilliseconds);
+        this.cachedRequest.setCacheDirectory(config.cache.directoryPath);
+        this.cachedRequest.setValue('ttl', config.cache.maxAgeMilliseconds);
+
+        this.remoteResourceCodec = new remoteResource.Codec(this.config.routeBase, this.config.refererQueryParam);
     }
 
     /**
-     * Clears the cache maintained by this proxy by deleting all files in `this.directoryPath`.
+     * Empties the cache directory maintained by this proxy.
      */
-    public clear(): Promise<void> {
-        return fsep.emptyDir(this.cacheDirectoryPath);
+    public clearCacheDirectory(): void {
+        return fsep.emptyDirSync(this.config.cache.directoryPath);
+    }
+
+    /**
+     * Empties the rewrites directory maintained by this proxy.
+     */
+    public clearRewritesDirectory(): void {
+        return fsep.emptyDirSync(this.config.rewrites.directoryPath);
     }
 
     /**
@@ -76,31 +93,34 @@ export class ProxyService {
      */
     public registerMiddleware(application: express.Application): express.Application {
         application.use(this.createMiddlewareToRedirectExternallyReferredRelativeUrls());
-        application.get(this.routeBase + '*', this.createMiddlewareToProxyAndCacheAndRewriteExternalResources());
+        application.get(this.config.routeBase + '*', this.createMiddlewareToProxyAndCacheAndRewriteExternalResources());
         return application;
     }
 
     private createMiddlewareToRedirectExternallyReferredRelativeUrls(): express.RequestHandler {
         return (req: express.Request, res: express.Response, next: express.NextFunction) => {
             // Ignore requests that are already for external resources.
-            const requestExternalUrl: string | undefined = this.getExternalUrl(req.url);
-            if (requestExternalUrl) { return next(); }
+            const requestRemoteComponents: remoteResource.Components | null = this.remoteResourceCodec.decode(req.url);
+            if (requestRemoteComponents) { return next(); }
 
-            // Ignore requests from referers that aren't external resources.
+            // Examine the path portion of the referer header. Ignore requests that don't originate from external
+            // resources.
             const referer: string | undefined = req.header('referer');
             if (!referer) { return next(); }
 
-            const refererParsedUrl: url.Url = url.parse(referer);
-            if (!refererParsedUrl.path) { return next(); }
-
-            const refererExternalUrl: string | undefined = this.getExternalUrl(refererParsedUrl.path);
-            if (!refererExternalUrl) { return next(); }
+            const refererParsedUrl = new url.URL(referer);
+            const refererPathAndHash: string = refererParsedUrl.pathname + refererParsedUrl.search + refererParsedUrl.hash;
+            const refererRemoteComponents: remoteResource.Components | null = this.remoteResourceCodec.decode(refererPathAndHash);
+            if (!refererRemoteComponents) { return next(); }
 
             // Generate the redirect URL.
-            const redirectUrl: string = this.routeBase + url.resolve(refererExternalUrl, req.url);
+            const externalUrl: string = url.resolve(refererRemoteComponents.externalUrl, req.url);
+            const redirectUrl: string = this.remoteResourceCodec.encode(externalUrl);
+
             console.group(`Redirecting ${req.url}`);
             console.log(`➡ ${redirectUrl}`);
             console.groupEnd();
+
             res.redirect(redirectUrl);
         };
     }
@@ -108,14 +128,16 @@ export class ProxyService {
     private createMiddlewareToProxyAndCacheAndRewriteExternalResources(): express.RequestHandler {
         return (req: express.Request, res: express.Response, next: express.NextFunction) => {
             // This handler should only process requests for external resources.
-            const externalUrl: string | undefined = this.getExternalUrl(req.url);
-            if (!externalUrl) { return next(); }
+            const requestRemoteComponents: remoteResource.Components | null = this.remoteResourceCodec.decode(req.url);
+            if (!requestRemoteComponents) { return next(); }
 
-            // Ignore any unconventionally formatted URL. For example, source map files are sometimes requested with a URL
-            // having only a single slash, like "http:/www.example.com". The request package will throw an error with such
-            // URLs, and that should be avoided so as to not crash this server.
-            const externalParsedUrl: url.Url = url.parse(externalUrl);
-            if (!externalParsedUrl.host) { return next(); }
+            // Normalize any unconventionally formatted URL. For example, source map files are sometimes requested
+            // with a URL having only a single slash, like "http:/www.example.com/script.map". The request package
+            // will throw an error with such URLs, and that should be avoided so as to not crash this server.
+            {
+                const parsedUrl: url.URL = new url.URL(requestRemoteComponents.externalUrl);
+                requestRemoteComponents.externalUrl = parsedUrl.toString();
+            }
 
             // Create an error handler function that can be used on all participants in a stream pipe.
             const errorHandler = (error: Error) => next(error);
@@ -127,19 +149,19 @@ export class ProxyService {
                 if (value) { headers[name] = value; }
             }
             const options: request.CoreOptions = { headers };
-            let responseStream: stream.Readable = this.requestAsStream(externalUrl, options).on('error', errorHandler);
+            let responseStream: stream.Readable = this.requestAsStream(requestRemoteComponents.externalUrl, options).on('error', errorHandler);
 
             responseStream.on('response', (response: cachedRequest.Response) => {
                 // Perform content rewriting if called for. This is done before copying headers because the
                 // transformation pipeline may need to alter them.
-                // TODO: Mutating a function parameter is ugly; rewrite this to be more elegant.
-                responseStream = this.createResponseTransformPipeline(req.path, responseStream, response, errorHandler);
+                // TODO: Mutating a function argument is ugly; rewrite this to be more elegant.
+                responseStream = this.createContentRewritingPipeline(requestRemoteComponents.externalUrl, responseStream, response, errorHandler);
 
                 // Copy the status code and headers that aren't blacklisted to the Express response.
                 res.status(response.statusCode);
                 for (const key in response.headers) {
                     if (!response.headers.hasOwnProperty(key)
-                        || ProxyService.responseHeadersBlacklist.indexOf(key) >= 0) { continue; }
+                        || ProxyService.responseHeadersBlacklist.indexOf(key.toLowerCase()) >= 0) { continue; }
                     const value: number | string | string[] = response.headers[key] || '';
                     res.setHeader(key, value);
                 }
@@ -150,21 +172,27 @@ export class ProxyService {
         }
     }
 
-    private createResponseTransformPipeline(
-        requestPath: string,
+    private createContentRewritingPipeline(
+        path: string,
         responseStream: stream.Readable,
         response: cachedRequest.Response,
         errorHandler: (error: Error) => void
     ): stream.Readable {
         // Get the content type and encoding.
         const contentEncoding: string = (response.headers['content-encoding'] || '').toString();
+
         let contentType: string = (response.headers['content-type'] || '').toString();
         const semicolonIndex: number = contentType.indexOf(';');
         if (semicolonIndex >= 0) { contentType = contentType.substring(0, semicolonIndex); }
 
         // Determine which rewrite rules apply to this resource. If none do, then don't go through the expense of
-        // decompressing, searching for regex matches, and possibly recompressing the stream. 
-        const rules: contentRewriting.Rule[] = contentRewriting.Rule.selectApplicable(this.contentRewritingRules, requestPath, contentType);
+        // decompressing, searching for regex matches, and possibly recompressing the stream.
+        const context: contentRewriting.Context = {
+            contentType,
+            path,
+            remoteResourceCodec: this.remoteResourceCodec
+        }
+        const rules: contentRewriting.Rule[] = contentRewriting.Rule.selectApplicableRules(context, this.config.rewrites.rules);
         if (rules.length === 0) { return responseStream; }
 
         // Create the decompression, rewrite, and recompression transforms. These could be PassThroughs or the real
@@ -178,20 +206,20 @@ export class ProxyService {
         switch (contentEncoding) {
             case 'br':
                 decompressTransform = iltorb.decompressStream();
-                rewriteTransform = new contentRewriting.Transform(requestPath, rules, this.beforeAndAfterDirectoryPath);
-                recompressTransform = this.preserveContentEncoding ? iltorb.compressStream() : new stream.PassThrough();
+                rewriteTransform = new contentRewriting.Transform(context, rules, this.config.rewrites.directoryPath);
+                recompressTransform = this.config.rewrites.recompress ? iltorb.compressStream() : new stream.PassThrough();
                 break;
 
             case 'deflate':
                 decompressTransform = zlib.createInflate();
-                rewriteTransform = new contentRewriting.Transform(requestPath, rules, this.beforeAndAfterDirectoryPath);
-                recompressTransform = this.preserveContentEncoding ? zlib.createDeflate() : new stream.PassThrough();
+                rewriteTransform = new contentRewriting.Transform(context, rules, this.config.rewrites.directoryPath);
+                recompressTransform = this.config.rewrites.recompress ? zlib.createDeflate() : new stream.PassThrough();
                 break;
 
             case 'gzip':
                 decompressTransform = zlib.createGunzip();
-                rewriteTransform = new contentRewriting.Transform(requestPath, rules, this.beforeAndAfterDirectoryPath);
-                recompressTransform = this.preserveContentEncoding ? zlib.createGzip() : new stream.PassThrough();
+                rewriteTransform = new contentRewriting.Transform(context, rules, this.config.rewrites.directoryPath);
+                recompressTransform = this.config.rewrites.recompress ? zlib.createGzip() : new stream.PassThrough();
                 break;
 
             case 'compress':
@@ -203,7 +231,7 @@ export class ProxyService {
             case 'identity':
             default:
                 decompressTransform = new stream.PassThrough();
-                rewriteTransform = new contentRewriting.Transform(requestPath, rules, this.beforeAndAfterDirectoryPath);
+                rewriteTransform = new contentRewriting.Transform(context, rules, this.config.rewrites.directoryPath);
                 recompressTransform = new stream.PassThrough();
                 break;
         }
@@ -212,7 +240,7 @@ export class ProxyService {
         recompressTransform.on('error', errorHandler);
 
         // Update the content encoding header if the payload is decompressed and not recompressed.
-        if (!this.preserveContentEncoding && !(decompressTransform instanceof stream.PassThrough)) {
+        if (!this.config.rewrites.recompress && !(decompressTransform instanceof stream.PassThrough)) {
             response['content-encoding'] = 'identity';
         }
 
@@ -221,18 +249,6 @@ export class ProxyService {
             .pipe(decompressTransform).on('error', (_error: Error) => rewriteTransform.end())
             .pipe(rewriteTransform).on('error', (_error: Error) => recompressTransform.end())
             .pipe(recompressTransform);
-    }
-
-    /**
-     * Extracts the portion of the URL immediately following `this.routeBase`. Returns undefined if `url` doesn't start
-     * with that pattern.
-     * 
-     * @param url 
-     */
-    private getExternalUrl(url: string | undefined): string | undefined {
-        return url && url.startsWith(this.routeBase)
-            ? url.substring(this.routeBase.length)
-            : undefined;
     }
 
     /**
@@ -256,6 +272,7 @@ export class ProxyService {
     private static readonly responseHeadersBlacklist: ReadonlyArray<string> = Object.freeze([
         'content-length',
         'content-security-policy',
+        'transfer-encoding',
         'x-frame-options'
     ]);
 }

@@ -1,8 +1,9 @@
+client/
 client/dist/
 client/node_modules/
 
-server/.before-and-after/
 server/.cache/
+server/.rewrites/
 server/dist/
 server/node_modules/
 server/*.pem

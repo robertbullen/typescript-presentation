@@ -6,10 +6,10 @@ import * as path          from 'path';
 
 import {languagesUrl} from '../../common/src/languages';
 
-import * as config        from './config';
-import {rules}            from './content-rewriting-rules';
-import {LanguagesService} from './languages-service';
-import {ProxyService}     from './proxy-service';
+import * as config           from './config';
+import {LanguagesService}    from './languages-service';
+import * as proxy            from './proxy';
+import * as contentRewriting from './proxy/content-rewriting';
 
 //---------------------------------------------
 // Create and Configure the Express Application
@@ -22,14 +22,21 @@ const application: express.Application = express();
 application.use(connectLogger());
 
 // Register middleware for proxying (and caching and rewriting) external resources.
-const proxyService = new ProxyService(
-    config.routeBase,
-    config.cacheDirectoryPath,
-    config.beforeAndAfterDirectoryPath,
-    config.maxAgeMilliseconds,
-    rules,
-    config.preserveContentEncoding
-);
+const proxyConfig: proxy.ProxyConfig = {
+    routeBase: config.routeBase,
+    refererQueryParam: config.refererQueryParam,
+    cache: {
+        directoryPath: '.cache',
+        maxAgeMilliseconds: 7 * 24 * 60 * 60 * 1000
+    },
+    rewrites: {
+        rules: contentRewriting.allRules,
+        directoryPath: '.rewrites',
+        recompress: true
+    }
+};
+const proxyService = new proxy.ProxyService(proxyConfig);
+proxyService.clearRewritesDirectory();
 proxyService.registerMiddleware(application);
 
 // Register middleware for the languages endpoint.
