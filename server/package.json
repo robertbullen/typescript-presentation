@@ -15,11 +15,9 @@
     "build:watch": "tsc --watch",
     "rebuild": "npm run clean && npm run build",
     "start": "node ./dist/server/src/server.js",
-    "start:dev": "npm run rebuild && concurrently 'npm run build:watch' 'npm run start:watch'",
-    "start:watch": "nodemon",
+    "start:watch": "npm run rebuild && concurrently 'npm run build:watch' 'nodemon'",
     "test": "jest --verbose ./dist",
-    "test:dev": "npm run rebuild && concurrently 'npm run build:watch' 'npm run test:watch'",
-    "test:watch": "jest --verbose --watch ./dist"
+    "test:watch": "npm run rebuild && concurrently --raw 'npm run build:watch' 'jest --verbose --watch ./dist'"
   },
   "author": {
     "name": "Robert Bullen",

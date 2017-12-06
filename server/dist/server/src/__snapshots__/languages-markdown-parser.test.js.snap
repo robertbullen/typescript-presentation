@@ -1,0 +1,1180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`.js extractHeadingRecords results match the snapshot 1`] = `
+Array [
+  Object {
+    "position": 300,
+    "stack": Array [
+      Object {
+        "level": 3,
+        "text": "CoffeeScript + Family & Friends",
+      },
+    ],
+  },
+  Object {
+    "position": 634,
+    "stack": Array [
+      Object {
+        "level": 3,
+        "text": "CoffeeScript + Family & Friends",
+      },
+      Object {
+        "level": 4,
+        "text": "Family (share genes with CoffeeScript)",
+      },
+    ],
+  },
+  Object {
+    "position": 2643,
+    "stack": Array [
+      Object {
+        "level": 3,
+        "text": "CoffeeScript + Family & Friends",
+      },
+      Object {
+        "level": 4,
+        "text": "Friends (philosophically related)",
+      },
+    ],
+  },
+  Object {
+    "position": 7146,
+    "stack": Array [
+      Object {
+        "level": 3,
+        "text": "JavaScript Extensions",
+      },
+    ],
+  },
+  Object {
+    "position": 7173,
+    "stack": Array [
+      Object {
+        "level": 3,
+        "text": "JavaScript Extensions",
+      },
+      Object {
+        "level": 4,
+        "text": "Security enforcing JavaScript",
+      },
+    ],
+  },
+  Object {
+    "position": 7691,
+    "stack": Array [
+      Object {
+        "level": 3,
+        "text": "JavaScript Extensions",
+      },
+      Object {
+        "level": 4,
+        "text": "Static typing",
+      },
+    ],
+  },
+]
+`;
+
+exports[`.js extractLanguages results match the snapshot 1`] = `
+Array [
+  Object {
+    "description": "Unfancy JavaScript",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+    ],
+    "name": "CoffeeScript",
+    "url": "http://coffeescript.org/",
+  },
+  Object {
+    "description": "Rewrite of the CS compiler",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+    ],
+    "name": "CoffeeScript II: The Wrath of Khan",
+    "url": "https://github.com/michaelficarra/CoffeeScriptRedux",
+  },
+  Object {
+    "description": "A CoffeeScript dialect that aims to be more radical and practical, also acts as a test bed for features that get imported in CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Coco",
+    "url": "https://github.com/satyr/coco",
+  },
+  Object {
+    "description": "A fork of Coco that is much more compatible with CoffeeScript, more functional, and with more features.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "LiveScript",
+    "url": "http://livescript.net",
+  },
+  Object {
+    "description": "A CoffeeScript dialect that adds support for \\\\\`await\\\\\` and \\\\\`defer\\\\\` keywords which simplify async control flow.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "IcedCoffeeScript",
+    "url": "http://maxtaco.github.com/coffee-script/",
+  },
+  Object {
+    "description": "CS based on parser combinators. The project’s aim is to add static metaprogramming (i.e. macros + syntax extensibility) to Coffee Script (CS), similar to how Metalua adds such features to Lua. The resulting compiler, once merged with the official compiler, should be usable as a drop-in replacement for it.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Parsec CoffeeScript",
+    "url": "https://github.com/fab13n/parsec-coffee-script",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that adds built-in support for contracts.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Contracts.coffee",
+    "url": "https://github.com/disnet/contracts.coffee",
+  },
+  Object {
+    "description": "A CoffeeScript fork that adds type annotations which are compiled to Google closure compiler type annotation comments.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Uberscript",
+    "url": "https://github.com/jstrachan/coffee-script/blob/master/TypeAnnotations.md",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that support Asynchronous Syntax and Regexp operator =~",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "ToffeeScript",
+    "url": "https://github.com/jiangmiao/toffee-script",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that supports packages and classes import, useful for browser applications",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Caffeine",
+    "url": "https://github.com/ich/caffeine",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that offers a C-like type system with manual memory management",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "heap.coffee",
+    "url": "https://github.com/syg/heap.coffee",
+  },
+  Object {
+    "description": "Ember.js-infused CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "EmberScript",
+    "url": "http://emberscript.com",
+  },
+  Object {
+    "description": "CoffeeScript with hygienic macros. See also [#3171](https://github.com/jashkenas/coffeescript/pull/3171)",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "BlackCoffee",
+    "url": "https://github.com/paiq/blackcoffee",
+  },
+  Object {
+    "description": "JavaScript without the Variable Declarations and Semicolons",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "NodeScript",
+    "url": "https://github.com/nodescript/nodescript",
+  },
+  Object {
+    "description": "The World’s Most Intense Programming Language!",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Bizubee",
+    "url": "https://github.com/bizubee/bizubee",
+  },
+  Object {
+    "description": "Enhanced Syntax for JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Kaffeine",
+    "url": "https://github.com/weepy/kaffeine",
+  },
+  Object {
+    "description": "Language that emphasises readability, handles async control flow nicely, is friendly to domain specific languages and compiles to regular JavaScript",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "pogoscript",
+    "url": "http://pogoscript.org/",
+  },
+  Object {
+    "description": "A JavaScript with Lispy syntax and Macros.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "LispyScript",
+    "url": "http://lispyscript.com/",
+  },
+  Object {
+    "description": "A Lisp-like language that compiles to JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Hot Cocoa Lisp",
+    "url": "https://github.com/olleicua/hcl",
+  },
+  Object {
+    "description": "JavaScript with a lisp.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Sibilant",
+    "url": "https://sibilant.org/",
+  },
+  Object {
+    "description": "Clojure-like syntax, [mori](http://swannodette.github.io/mori/)’s immutable data structures in a few [sweet.js](http://sweetjs.org) macros. Can be intermixed with JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "ki",
+    "url": "http://ki-lang.org",
+  },
+  Object {
+    "description": "A JS-native and axiomatic Lisp that focuses on the core ideas of code-as-data, S-expressions, and macros, introducing as few new concepts as possible.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "jisp",
+    "url": "http://jisp.io/",
+  },
+  Object {
+    "description": "Looks very similar to JavaScript at first, but offers (hopefully) many useful features",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Ham",
+    "url": "https://github.com/jameskeane/ham-script",
+  },
+  Object {
+    "description": "Compile-to-JavaScript language designed to empower the user while attempting to prevent some common errors, offers Macros and optional Typing",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "GorillaScript",
+    "url": "http://ckknight.github.com/gorillascript/",
+  },
+  Object {
+    "description": "Ruby-flavored JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "RedScript",
+    "url": "https://github.com/AdamBrodzinski/RedScript",
+  },
+  Object {
+    "description": "Functional logic solver, compiler.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Daonode",
+    "url": "https://github.com/chaosim/daonode",
+  },
+  Object {
+    "description": "Literate, highly-readable, type annotated, imperative language that compiles to JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "LiteScript",
+    "url": "https://github.com/luciotato/LiteScript",
+  },
+  Object {
+    "description": "Similar to Dart, CoffeeScript, Python and PHP",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "ColaScript",
+    "url": "https://github.com/TrigenSoftware/ColaScript",
+  },
+  Object {
+    "description": "A customizable and extensible language with dynamic parser and meta language.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Taijilang",
+    "url": "https://github.com/taijiweb/taijilang",
+  },
+  Object {
+    "description": "MoonScript is a dynamic scripting language that compiles into Lua. The syntax of MoonScript has been heavily inspired by the syntax of CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "MoonScript",
+    "url": "http://moonscript.org/",
+  },
+  Object {
+    "description": "An extensible language with pattern matching, hygienic macros and a syntax similar to Python.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Earl Grey",
+    "url": "http://www.earl-grey.io/",
+  },
+  Object {
+    "description": "Lightweight language that reworks Javascript’s syntax to be better for untyped functional-style programming.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Khepri",
+    "url": "http://khepri-lang.com",
+  },
+  Object {
+    "description": "Spider is a programming language that compiles to JavaScript (ES5 and ES6 targets). It takes the best ideas of Go, Swift, Python, C# and CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Spider",
+    "url": "https://github.com/alongubkin/spider",
+  },
+  Object {
+    "description": "Write JavaScript with indentations and polish notations, similar to S-Expression but with fewer parentheses.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "CirruScript",
+    "url": "http://script.cirru.org/",
+  },
+  Object {
+    "description": "Tag Line Commands is a inline macro language for calling+formatting javascript/coffeescript/livescript json output into HTML.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "TLC",
+    "url": "https://github.com/michaelchance/tlc",
+  },
+  Object {
+    "description": "Inspired by Python and Ruby that integrates natively with the [Virtual-DOM library](https://github.com/Matt-Esch/virtual-dom)",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "CokeScript",
+    "url": "https://github.com/batiste/CokeScript",
+  },
+  Object {
+    "description": "Compiles to performant and readable JavaScript",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "imba",
+    "url": "http://imba.io/",
+  },
+  Object {
+    "description": "Straightforward language for the Web",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Cor",
+    "url": "http://yosbelms.github.io/cor",
+  },
+  Object {
+    "description": "A language inspired by Swift",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Iode",
+    "url": "https://github.com/iode-lang/iode",
+  },
+  Object {
+    "description": "A more radical, but more readable, different new language.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "FutureScript",
+    "url": "http://futurescript.org/",
+  },
+  Object {
+    "description": "Shorthanding JavaScript one more time.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "PearScript",
+    "url": "https://github.com/kocisov/pearscript",
+  },
+  Object {
+    "description": "JavaScript in the Ramda way.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "RamdaScript",
+    "url": "https://github.com/yosbelms/ramdascript",
+  },
+  Object {
+    "description": "A functional language that has loops, types, structs, and much more.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "RoyalScript",
+    "url": "https://github.com/jweinst1/Royalscript",
+  },
+  Object {
+    "description": "Compiles ES5/strict to ES3 and supports object-capabilities",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "Caja",
+    "url": "https://developers.google.com/caja/",
+  },
+  Object {
+    "description": "Client-side static verifier and API, making third party scripts safe.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "ADsafe",
+    "url": "http://www.adsafe.org/",
+  },
+  Object {
+    "description": "Static verifier supporting object-capabilities.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "Jacaranda",
+    "url": "http://jacaranda.org/",
+  },
+  Object {
+    "description": "Framework for building secure mashups.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "Dojo Secure",
+    "url": "http://www.sitepen.com/blog/2008/08/01/secure-mashups-with-dojoxsecure/",
+  },
+  Object {
+    "description": "C/Java-like syntax with optional typing by Google.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Dart",
+    "url": "http://www.dartlang.org/",
+  },
+  Object {
+    "description": "Typed superset of JavaScript by Microsoft.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "TypeScript",
+    "url": "http://www.typescriptlang.org/",
+  },
+  Object {
+    "description": "From Brown PLT. Types for JavaScript (itself).",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "TeJaS",
+    "url": "http://www.jswebtools.org/",
+  },
+  Object {
+    "description": "Subset of JavaScript that can be used as a low-level, efficient target language for compilers.  Now included in Firefox.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "asm.js",
+    "url": "http://asmjs.org/",
+  },
+  Object {
+    "description": "JavaScript superset with classes, type checking, among other features",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "JavaScript++",
+    "url": "http://www.jspplang.org/",
+  },
+  Object {
+    "description": "[commercial] Enhances JavaScript with powerful features like classes, namespaces and type-checking.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Mascara",
+    "url": "http://www.mascaraengine.com/",
+  },
+  Object {
+    "description": "Tries to meld JavaScript semantics with some features common in static functional languages",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Roy",
+    "url": "http://roy.brianmckenna.org/",
+  },
+  Object {
+    "description": "Type-safe functional language that compiles to HTML, CSS, and JavaScript.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Elm",
+    "url": "http://elm-lang.org/",
+  },
+  Object {
+    "description": "Statically typed, with type inference and generics",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Swym",
+    "url": "http://cheersgames.com/swym/wiki/index.php?title=Main_Page",
+  },
+  Object {
+    "description": "JavaScript platform for statically typed variables without a custom compiler.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Typecast.js",
+    "url": "http://typecastjs.org",
+  },
+  Object {
+    "description": "A small, strongly typed programming language that compiles to JavaScript and C++, featuring extensible records and effects, and type classes.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "PureScript",
+    "url": "http://purescript.org",
+  },
+  Object {
+    "description": "Static type checker for JavaScript, supports optional types and null checks by Facebook.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Flow",
+    "url": "http://flowtype.org",
+  },
+  Object {
+    "description": "With Apache FlexJS - Based on ECMAScript 4, ActionScript provides typing and can be compiled to JavaScript.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "ActionScript",
+    "url": "http://flex.apache.org/download-flexjs.html",
+  },
+  Object {
+    "description": "OCaml compiled to readable JavaScript.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "BuckleScript",
+    "url": "https://github.com/BuckleScript/bucklescript",
+  },
+]
+`;
+
+exports[`.js parseMarkdown results match the snapshot 1`] = `
+Array [
+  Object {
+    "description": "Unfancy JavaScript",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+    ],
+    "name": "CoffeeScript",
+    "url": "http://coffeescript.org/",
+  },
+  Object {
+    "description": "Rewrite of the CS compiler",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+    ],
+    "name": "CoffeeScript II: The Wrath of Khan",
+    "url": "https://github.com/michaelficarra/CoffeeScriptRedux",
+  },
+  Object {
+    "description": "A CoffeeScript dialect that aims to be more radical and practical, also acts as a test bed for features that get imported in CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Coco",
+    "url": "https://github.com/satyr/coco",
+  },
+  Object {
+    "description": "A fork of Coco that is much more compatible with CoffeeScript, more functional, and with more features.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "LiveScript",
+    "url": "http://livescript.net",
+  },
+  Object {
+    "description": "A CoffeeScript dialect that adds support for \\\\\`await\\\\\` and \\\\\`defer\\\\\` keywords which simplify async control flow.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "IcedCoffeeScript",
+    "url": "http://maxtaco.github.com/coffee-script/",
+  },
+  Object {
+    "description": "CS based on parser combinators. The project’s aim is to add static metaprogramming (i.e. macros + syntax extensibility) to Coffee Script (CS), similar to how Metalua adds such features to Lua. The resulting compiler, once merged with the official compiler, should be usable as a drop-in replacement for it.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Parsec CoffeeScript",
+    "url": "https://github.com/fab13n/parsec-coffee-script",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that adds built-in support for contracts.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Contracts.coffee",
+    "url": "https://github.com/disnet/contracts.coffee",
+  },
+  Object {
+    "description": "A CoffeeScript fork that adds type annotations which are compiled to Google closure compiler type annotation comments.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Uberscript",
+    "url": "https://github.com/jstrachan/coffee-script/blob/master/TypeAnnotations.md",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that support Asynchronous Syntax and Regexp operator =~",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "ToffeeScript",
+    "url": "https://github.com/jiangmiao/toffee-script",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that supports packages and classes import, useful for browser applications",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "Caffeine",
+    "url": "https://github.com/ich/caffeine",
+  },
+  Object {
+    "description": "A dialect of CoffeeScript that offers a C-like type system with manual memory management",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "heap.coffee",
+    "url": "https://github.com/syg/heap.coffee",
+  },
+  Object {
+    "description": "Ember.js-infused CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "EmberScript",
+    "url": "http://emberscript.com",
+  },
+  Object {
+    "description": "CoffeeScript with hygienic macros. See also [#3171](https://github.com/jashkenas/coffeescript/pull/3171)",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Family (share genes with CoffeeScript)",
+    ],
+    "name": "BlackCoffee",
+    "url": "https://github.com/paiq/blackcoffee",
+  },
+  Object {
+    "description": "JavaScript without the Variable Declarations and Semicolons",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "NodeScript",
+    "url": "https://github.com/nodescript/nodescript",
+  },
+  Object {
+    "description": "The World’s Most Intense Programming Language!",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Bizubee",
+    "url": "https://github.com/bizubee/bizubee",
+  },
+  Object {
+    "description": "Enhanced Syntax for JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Kaffeine",
+    "url": "https://github.com/weepy/kaffeine",
+  },
+  Object {
+    "description": "Language that emphasises readability, handles async control flow nicely, is friendly to domain specific languages and compiles to regular JavaScript",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "pogoscript",
+    "url": "http://pogoscript.org/",
+  },
+  Object {
+    "description": "A JavaScript with Lispy syntax and Macros.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "LispyScript",
+    "url": "http://lispyscript.com/",
+  },
+  Object {
+    "description": "A Lisp-like language that compiles to JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Hot Cocoa Lisp",
+    "url": "https://github.com/olleicua/hcl",
+  },
+  Object {
+    "description": "JavaScript with a lisp.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Sibilant",
+    "url": "https://sibilant.org/",
+  },
+  Object {
+    "description": "Clojure-like syntax, [mori](http://swannodette.github.io/mori/)’s immutable data structures in a few [sweet.js](http://sweetjs.org) macros. Can be intermixed with JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "ki",
+    "url": "http://ki-lang.org",
+  },
+  Object {
+    "description": "A JS-native and axiomatic Lisp that focuses on the core ideas of code-as-data, S-expressions, and macros, introducing as few new concepts as possible.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "jisp",
+    "url": "http://jisp.io/",
+  },
+  Object {
+    "description": "Looks very similar to JavaScript at first, but offers (hopefully) many useful features",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Ham",
+    "url": "https://github.com/jameskeane/ham-script",
+  },
+  Object {
+    "description": "Compile-to-JavaScript language designed to empower the user while attempting to prevent some common errors, offers Macros and optional Typing",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "GorillaScript",
+    "url": "http://ckknight.github.com/gorillascript/",
+  },
+  Object {
+    "description": "Ruby-flavored JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "RedScript",
+    "url": "https://github.com/AdamBrodzinski/RedScript",
+  },
+  Object {
+    "description": "Functional logic solver, compiler.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Daonode",
+    "url": "https://github.com/chaosim/daonode",
+  },
+  Object {
+    "description": "Literate, highly-readable, type annotated, imperative language that compiles to JavaScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "LiteScript",
+    "url": "https://github.com/luciotato/LiteScript",
+  },
+  Object {
+    "description": "Similar to Dart, CoffeeScript, Python and PHP",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "ColaScript",
+    "url": "https://github.com/TrigenSoftware/ColaScript",
+  },
+  Object {
+    "description": "A customizable and extensible language with dynamic parser and meta language.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Taijilang",
+    "url": "https://github.com/taijiweb/taijilang",
+  },
+  Object {
+    "description": "MoonScript is a dynamic scripting language that compiles into Lua. The syntax of MoonScript has been heavily inspired by the syntax of CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "MoonScript",
+    "url": "http://moonscript.org/",
+  },
+  Object {
+    "description": "An extensible language with pattern matching, hygienic macros and a syntax similar to Python.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Earl Grey",
+    "url": "http://www.earl-grey.io/",
+  },
+  Object {
+    "description": "Lightweight language that reworks Javascript’s syntax to be better for untyped functional-style programming.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Khepri",
+    "url": "http://khepri-lang.com",
+  },
+  Object {
+    "description": "Spider is a programming language that compiles to JavaScript (ES5 and ES6 targets). It takes the best ideas of Go, Swift, Python, C# and CoffeeScript.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Spider",
+    "url": "https://github.com/alongubkin/spider",
+  },
+  Object {
+    "description": "Write JavaScript with indentations and polish notations, similar to S-Expression but with fewer parentheses.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "CirruScript",
+    "url": "http://script.cirru.org/",
+  },
+  Object {
+    "description": "Tag Line Commands is a inline macro language for calling+formatting javascript/coffeescript/livescript json output into HTML.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "TLC",
+    "url": "https://github.com/michaelchance/tlc",
+  },
+  Object {
+    "description": "Inspired by Python and Ruby that integrates natively with the [Virtual-DOM library](https://github.com/Matt-Esch/virtual-dom)",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "CokeScript",
+    "url": "https://github.com/batiste/CokeScript",
+  },
+  Object {
+    "description": "Compiles to performant and readable JavaScript",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "imba",
+    "url": "http://imba.io/",
+  },
+  Object {
+    "description": "Straightforward language for the Web",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Cor",
+    "url": "http://yosbelms.github.io/cor",
+  },
+  Object {
+    "description": "A language inspired by Swift",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "Iode",
+    "url": "https://github.com/iode-lang/iode",
+  },
+  Object {
+    "description": "A more radical, but more readable, different new language.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "FutureScript",
+    "url": "http://futurescript.org/",
+  },
+  Object {
+    "description": "Shorthanding JavaScript one more time.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "PearScript",
+    "url": "https://github.com/kocisov/pearscript",
+  },
+  Object {
+    "description": "JavaScript in the Ramda way.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "RamdaScript",
+    "url": "https://github.com/yosbelms/ramdascript",
+  },
+  Object {
+    "description": "A functional language that has loops, types, structs, and much more.",
+    "headingStack": Array [
+      "CoffeeScript + Family & Friends",
+      "Friends (philosophically related)",
+    ],
+    "name": "RoyalScript",
+    "url": "https://github.com/jweinst1/Royalscript",
+  },
+  Object {
+    "description": "Compiles ES5/strict to ES3 and supports object-capabilities",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "Caja",
+    "url": "https://developers.google.com/caja/",
+  },
+  Object {
+    "description": "Client-side static verifier and API, making third party scripts safe.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "ADsafe",
+    "url": "http://www.adsafe.org/",
+  },
+  Object {
+    "description": "Static verifier supporting object-capabilities.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "Jacaranda",
+    "url": "http://jacaranda.org/",
+  },
+  Object {
+    "description": "Framework for building secure mashups.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Security enforcing JavaScript",
+    ],
+    "name": "Dojo Secure",
+    "url": "http://www.sitepen.com/blog/2008/08/01/secure-mashups-with-dojoxsecure/",
+  },
+  Object {
+    "description": "C/Java-like syntax with optional typing by Google.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Dart",
+    "url": "http://www.dartlang.org/",
+  },
+  Object {
+    "description": "Typed superset of JavaScript by Microsoft.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "TypeScript",
+    "url": "http://www.typescriptlang.org/",
+  },
+  Object {
+    "description": "From Brown PLT. Types for JavaScript (itself).",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "TeJaS",
+    "url": "http://www.jswebtools.org/",
+  },
+  Object {
+    "description": "Subset of JavaScript that can be used as a low-level, efficient target language for compilers.  Now included in Firefox.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "asm.js",
+    "url": "http://asmjs.org/",
+  },
+  Object {
+    "description": "JavaScript superset with classes, type checking, among other features",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "JavaScript++",
+    "url": "http://www.jspplang.org/",
+  },
+  Object {
+    "description": "[commercial] Enhances JavaScript with powerful features like classes, namespaces and type-checking.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Mascara",
+    "url": "http://www.mascaraengine.com/",
+  },
+  Object {
+    "description": "Tries to meld JavaScript semantics with some features common in static functional languages",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Roy",
+    "url": "http://roy.brianmckenna.org/",
+  },
+  Object {
+    "description": "Type-safe functional language that compiles to HTML, CSS, and JavaScript.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Elm",
+    "url": "http://elm-lang.org/",
+  },
+  Object {
+    "description": "Statically typed, with type inference and generics",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Swym",
+    "url": "http://cheersgames.com/swym/wiki/index.php?title=Main_Page",
+  },
+  Object {
+    "description": "JavaScript platform for statically typed variables without a custom compiler.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Typecast.js",
+    "url": "http://typecastjs.org",
+  },
+  Object {
+    "description": "A small, strongly typed programming language that compiles to JavaScript and C++, featuring extensible records and effects, and type classes.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "PureScript",
+    "url": "http://purescript.org",
+  },
+  Object {
+    "description": "Static type checker for JavaScript, supports optional types and null checks by Facebook.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "Flow",
+    "url": "http://flowtype.org",
+  },
+  Object {
+    "description": "With Apache FlexJS - Based on ECMAScript 4, ActionScript provides typing and can be compiled to JavaScript.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "ActionScript",
+    "url": "http://flex.apache.org/download-flexjs.html",
+  },
+  Object {
+    "description": "OCaml compiled to readable JavaScript.",
+    "headingStack": Array [
+      "JavaScript Extensions",
+      "Static typing",
+    ],
+    "name": "BuckleScript",
+    "url": "https://github.com/BuckleScript/bucklescript",
+  },
+]
+`;

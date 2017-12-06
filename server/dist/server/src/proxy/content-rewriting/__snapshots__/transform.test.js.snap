@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transform applies all HTML rules successfully 1`] = `
+"
+        <meta name=\\"test\\" content=\\"/~/https://www.example.com/meta1\\">
+        <meta content='/~/https://www.example.com/meta2' name='test' />
+        <meta name = \\"test\\"
+              content = \\"/~/https://www.example.com/meta3\\">
+        </meta>
+
+        <link rel=\\"stylesheet\\" href=\\"/~/https://www.example.com/syle1.css\\">
+        <link href='/~/https://www.example.com/style2.css' rel='stylesheet' />
+        <link rel = \\"stylesheet\\"
+              href = \\"/~/https://www.example.com/style3.css\\">
+        </link>
+
+        <style>
+            .test1 {
+                background-image: url(\\"/~/https://www.example.com/image1.png\\");
+            }
+            .test2 {
+                background-image: url('/~/https://www.example.com/image2.png');
+            }
+        </style>
+        <style type = \\"text/css\\">.test3 { background-image: url(/~/https://www.example.com/image3.png); }</style>
+
+        <iframe src=\\"/~/https://www.example.com/iframe.html\\"></iframe>
+
+        <script src=\\"/~/https://www.example.com/script1.js\\"></script>
+        <script type = 'application/javascript'
+                src = '/~/https://www.example.com/script2.js'>
+        </script>
+        <script>
+            const src = 'https://www.example.com/script3.js';
+        </script>"
+`;

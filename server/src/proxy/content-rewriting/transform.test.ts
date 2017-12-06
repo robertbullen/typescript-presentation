@@ -37,12 +37,14 @@ it(`${Transform.name} applies all HTML rules successfully`, async () => {
         </style>
         <style type = "text/css">.test3 { background-image: url(https://www.example.com/image3.png); }</style>
 
+        <iframe src="https://www.example.com/iframe.html"></iframe>
+
         <script src="https://www.example.com/script1.js"></script>
         <script type = 'application/javascript'
                 src = '//www.example.com/script2.js'>
         </script>
         <script>
-            const url = 'https://www.example.com/script3.js';
+            const src = 'https://www.example.com/script3.js';
         </script>`;
 
     const transform = new Transform(context, htmlRules, '');
