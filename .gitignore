@@ -4,6 +4,6 @@ client/node_modules/
 
 server/.cache/
 server/.rewrites/
-server/dist/
+server/dist/**/*.js
 server/node_modules/
 server/*.pem
