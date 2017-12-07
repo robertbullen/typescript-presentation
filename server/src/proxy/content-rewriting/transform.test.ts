@@ -37,7 +37,17 @@ it(`${Transform.name} applies all HTML rules successfully`, async () => {
         </style>
         <style type = "text/css">.test3 { background-image: url(https://www.example.com/image3.png); }</style>
 
-        <iframe src="https://www.example.com/iframe.html"></iframe>
+        <iframe src="https://www.example.com/iframe1.html"></iframe>
+        <iframe src='//www.example.com/iframe2.html'></iframe>
+        <iframe frameborder = "0"
+                src = 'https://www.example.com/iframe3.html'>
+        </iframe>
+
+        <img src="https://www.example.com/image1.png">
+        <img src='//www.example.com/image2.png' />
+        <img border = "0"
+             data-src = "https://www.example.com/image3.png">
+        </img>
 
         <script src="https://www.example.com/script1.js"></script>
         <script type = 'application/javascript'

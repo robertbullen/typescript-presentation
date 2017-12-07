@@ -63,6 +63,16 @@ export const htmlIframeSrcUrlRewritingRule = new UrlRewritingRule(
     }
 );
 
+export const htmlImgSrcUrlRewritingRule = new UrlRewritingRule(
+    'Rewriting HTML <img src="..."> from absolute to relative proxied URLs',
+    htmlContentType,
+    {
+        prefix: /<img[^>]+?(?:data-)?src\s*=\s*['"]/,
+        data: /(?:https?:)?\/\/[^'"]+/,
+        suffix: /['"][^]*?\/?>/
+    }
+);
+
 export const htmlJsUrlRewritingRule = new PreselectRule(
     'Rewriting HTML-embedded JavaScript strings from absolute to relative proxied URLs',
     htmlContentType,
@@ -107,6 +117,7 @@ export const htmlScriptSrcUrlRewritingRule = new UrlRewritingRule(
 export const htmlRules: ReadonlyArray<Rule> = Object.freeze([
     htmlCssUrlRewritingRule,
     htmlIframeSrcUrlRewritingRule,
+    htmlImgSrcUrlRewritingRule,
     // htmlJsUrlRewritingRule,
     htmlLinkHrefUrlRewritingRule,
     htmlMetaContentUrlRewritingRule,
