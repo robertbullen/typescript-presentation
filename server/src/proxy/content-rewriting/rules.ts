@@ -67,7 +67,7 @@ export const htmlImgSrcUrlRewritingRule = new UrlRewritingRule(
     'Rewriting HTML <img src="..."> from absolute to relative proxied URLs',
     htmlContentType,
     {
-        prefix: /<img[^>]+?(?:data-)?src\s*=\s*['"]/,
+        prefix: /<img[^>]+?src\s*=\s*['"]/,
         data: /(?:https?:)?\/\/[^'"]+/,
         suffix: /['"][^]*?\/?>/
     }

@@ -1,15 +1,15 @@
-import {Context,
-        Rule} from './rule';
+import {Context}   from './rule';
+import {RegexRule} from './regex-rule';
 
-export class CodeStrippingRule extends Rule {
+export class CodeStrippingRule extends RegexRule<string | RegExp> {
     public constructor(
         description: string,
         private readonly contentTypes: string | ReadonlyArray<string>,
         private readonly pathPattern: string | RegExp,
-        private readonly search: string | RegExp,
+        pattern: string | RegExp,
         private readonly replace: string = ''
     ) {
-        super(description);
+        super(description, pattern);
     }
 
     public isApplicable(context: Context): boolean {

@@ -1,18 +1,17 @@
-import * as xregexp from 'xregexp';
 import * as url     from 'url';
+import * as xregexp from 'xregexp';
 
-import {MatchCaptures,
-        RegexCaptures,
+import {Captures,
         RegexRule} from './regex-rule';
 import {Context}   from './rule';
 
-export class UrlRewritingRule extends RegexRule {
+export class UrlRewritingRule extends RegexRule<RegExp> {
     public constructor(
         description: string,
         private readonly contentTypes: string | ReadonlyArray<string>,
-        captures: RegexCaptures
+        patterns: Captures.Patterns
     ) {
-        super(description, captures);
+        super(description, Captures.buildRegex(patterns));
     }
 
     public isApplicable(context: Context): boolean {
@@ -22,10 +21,10 @@ export class UrlRewritingRule extends RegexRule {
     }
 
     public rewriteContent(context: Context, content: string): string {
-        return xregexp.replace(content, this.regex, (captures: MatchCaptures) => {
-            return captures.prefix
-                + UrlRewritingRule.rewriteUrl(context, captures.data)
-                + captures.suffix;
+        return xregexp.replace(content, this.search, (matches: Captures.Matches) => {
+            return matches.prefix
+                + UrlRewritingRule.rewriteUrl(context, matches.data)
+                + matches.suffix;
         });
     }
 

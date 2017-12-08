@@ -2,30 +2,32 @@ import * as xregexp from 'xregexp';
 
 import {Rule} from './rule';
 
-interface Captures<T> {
+export interface Captures<T extends string | RegExp> {
     prefix: T;
     data: T;
     suffix: T;
 }
-export type RegexCaptures = Captures<string | RegExp>;
-export type MatchCaptures = Captures<string>;
 
-function propertyOf<T>(propertyName: keyof T): string { return propertyName; }
+export namespace Captures {
+    export type Matches = Captures<string>;
+    export type Patterns = Captures<string | RegExp>;
+    
+    function property(name: keyof Captures<never>): string { return name; }
 
-export abstract class RegexRule extends Rule {
-    protected regex: RegExp;
-
-    protected constructor(
-        description: string,
-        captures: RegexCaptures
-    ) {
-        super(description);
-        this.regex = xregexp.build(`
-            ({{${propertyOf<Captures<never>>('prefix')}}})
-            ({{${propertyOf<Captures<never>>('data')}}})
-            ({{${propertyOf<Captures<never>>('suffix')}}})`,
-            captures,
+    export function buildRegex(patterns: Patterns): RegExp {
+        return xregexp.build(
+            `({{${property('prefix')}}}) ({{${property('data')}}}) ({{${property('suffix')}}})`,
+            patterns,
             'gx'
         );
+    }
+}
+
+export abstract class RegexRule<TSearch extends string | RegExp> extends Rule {
+    protected constructor(
+        description: string,
+        protected readonly search: TSearch
+    ) {
+        super(description);
     }
 }
