@@ -1,0 +1,132 @@
+/*
+ * When Reveal.js sees pre > code, it attaches the .hljs class, and from that point on the element is styled
+ * according to Highlight.js's styles. Although text colors are usually good in Highlight.js's stylesheets, the
+ * background colors probably don't jive, the font family is just 'monospace', and the font sizes require tweaking.
+ * For a nicely integrated look, the background color specified here is also specified for blockquotes.
+ */
+
+.reveal code {
+    background-color: rgba(0, 0, 0, 0.2);
+    font-family: 'Fira Code';
+    font-size: smaller;
+    line-height: 1.5em;
+}
+.reveal pre code {
+    font-size: larger;
+}
+
+/*
+ * Make images look seamless.
+ */
+
+.reveal section img {
+    background: none;
+    border: none;
+}
+
+/*
+    Reveal.js's default font face and weight choices don't allow <strong> to stand out. This is an alternative, using
+    Reveal.js's default blue.
+*/
+strong,
+.strong
+{
+    color: #42affa;
+}
+
+/*
+ * Improve the overall appearance of blockquotes.
+ */
+
+ /* Apply padding rather than rely on embedded elements' margins. */
+.reveal blockquote {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 20px;
+    text-align: left;
+}
+.reveal blockquote > * {
+    margin-left: 0;
+    margin-right: 0;
+}
+.reveal blockquote > :first-child {
+    margin-top: 0;
+}
+.reveal blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+/* De-italicize for emphasis when in a blockquote. */
+.reveal blockquote em {
+    font-style: normal;
+}
+
+/*
+ * Align table cells at the top.
+ */
+
+.reveal table th,
+.reveal table td {
+    vertical-align: top;
+}
+
+.horz-stack {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.horz-stack > * {
+    margin: 0 10px !important;
+}
+.horz-stack > :first-child {
+    margin-left: 0 !important;
+}
+.horz-stack > :last-child {
+    margin-right: 0 !important;
+}
+
+.horz-stack > iframe {
+    align-self: stretch;
+    flex: 1 0 auto;
+}
+
+/*
+ * Layout the languages cloud.
+ */
+
+languages-cloud {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+languages-cloud > svg {
+    flex: 100 1 0;
+    height: 100%;
+}
+
+languages-cloud > .footer {
+    align-items: baseline;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+languages-cloud > .footer > * {
+    font-family: inherit;
+    font-size: smaller;
+}
+
+languages-cloud > .footer > button {
+    background: #42affa;
+    border: none;
+    color: white;
+    margin: 0 0.2em;
+    padding: 0.2em 1em;
+}

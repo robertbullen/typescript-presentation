@@ -1,9 +1,12 @@
-client/
 client/dist/
 client/node_modules/
+client/index.bcbs.html
+
+private/
 
 server/.cache/
 server/.rewrites/
+server/.vscode/
 server/dist/**/*.js
 server/node_modules/
 server/*.pem

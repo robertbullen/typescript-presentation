@@ -1,0 +1,563 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>TypeScript</title>
+
+        <!-- Load stylesheets required by Reveal.js, including PDF support. -->
+        <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css" />
+        <link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css" />
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi)
+                ? 'node_modules/reveal.js/css/print/pdf.css'
+                : 'node_modules/reveal.js/css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+
+        <!-- Load stylesheets required by Highlight.js. -->
+         <link rel="stylesheet" href="node_modules/highlight.js/styles/vs2015.css" /> 
+
+        <!-- Load custom styles. -->
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Statically load and initialize SystemJS. All other scripts will be
+             dynamically loaded, starting with the client.js entry point. -->
+        <script src="node_modules/systemjs/dist/system.js"></script>
+        <script src="dist/client/src/systemjs-config.js"></script>
+        <script>
+            SystemJS.import('dist/client/src/client.js');
+        </script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- Introduction -->
+                <section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            # TypeScript
+                            ## by Robert Bullen
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## TypeScript's Taglines
+
+                            > JavaScript that Scales.
+
+                            > TypeScript is a superset of JavaScript that compiles to plain JavaScript.
+
+                            > Any host. Any browser. Any OS. Open Source.
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            > TypeScript is a superset of JavaScript that **compiles to plain JavaScript**.
+
+                            > **Any host. Any browser. Any OS.** Open Source.
+
+                            TypeScript can target any ECMAScript version spec of your choosing:
+
+                            * ES3
+                            * ES5
+                            * ES6/ES2015
+
+
+                            * ES2016
+                            * ES2017
+                            * ESNext
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            > TypeScript is a superset of JavaScript that **compiles to plain JavaScript**.
+
+                            > **Any host. Any browser. Any OS.** Open Source.
+
+                            TypeScript projects can target these platforms (and others):
+
+                            * Web/app/API servers
+                            * Microservices
+                            * Serverless cloud functions
+
+
+                            * Web browsers
+                            * Desktop applications
+                            * Mobile devices
+
+
+                            * Single-board computers
+                            * IoT devices
+                            * Embedded systems
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            > TypeScript is a superset of JavaScript that **compiles to plain JavaScript**.
+
+                            > **Any host. Any browser. Any OS.** Open Source.
+
+                            * No run-time libraries are needed
+                            * No run-time type safety checks are performed
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            > JavaScript that **Scales**.
+
+                            > **TypeScript is a superset of JavaScript** that compiles to plain JavaScript.
+
+                            TypeScript looks like JavaScript with _optional_ type annotations.
+
+                            ```javascript
+                            // JavaScript
+
+                            function request(meth, url, cb) { /*...*/ }
+                            ```
+
+                            ```typescript
+                            // TypeScript
+
+                            type RequestCallback = (err: Error | null, rsp: Response | null) => void;
+
+                            function request(meth: 'GET' | 'POST', url: string, cb: RequestCallback): void;
+                            function request(meth: 'GET' | 'POST', url: string): Promise<Response>;
+                            ```
+                            <!-- .element: class="fragment" -->
+                        </textarea>
+                    </section>
+                </section>
+
+                <!-- The State of JavaScript -->
+                <section>
+                    <section>
+                        <h1>The State of JavaScript</h1>
+                        <h2>Quirks and Challenges</h2>
+                        <h2>Popularity</h2>
+                        <h2>Maturity</h2>
+                        <h2>Transpilation</h2>
+                    </section>
+                    <section>
+                        <h2>Quirks and Challenges</h2>
+                    </section>
+                    <section>
+                        <h2>Wat</h2>
+                        <h3>A lightning talk by Gary Bernhardt from CodeMash 2012</h3>
+                        <p><a href="https://www.destroyallsoftware.com/talks/wat">https://www.destroyallsoftware.com/talks/wat</a></p>
+                    </section>
+                    <section>
+                        <h2>The Birth &amp; Death of JavaScript</h2>
+                        <h3>A talk by Gary Bernhardt from PyCon 2014</h3>
+                        <p><a href="https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript">https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript</a></p>
+                    </section>
+                    <section>
+                        <h2>Callback Hell</h2>
+                        <blockquote class="stretch twitter-tweet" data-lang="en" data-align="center">
+                            <p lang="und" dir="ltr">
+                                <a href="/~/https://twitter.com/hashtag/hadoukindentation?src=hash">#hadoukindentation</a>
+                                <a href="/~/https://twitter.com/hashtag/if?src=hash">#if</a>
+                                <a href="/~/https://twitter.com/hashtag/andthatsaBIGif?src=hash">#andthatsaBIGif</a>
+                                <a href="/~/https://t.co/suIVXY9u0W">pic.twitter.com/suIVXY9u0W</a>
+                            </p>
+                            &mdash; cloudshark ⛅ (@cloudshark) <a href="/~/https://twitter.com/cloudshark/status/775778843839922176">September 13, 2016</a>
+                        </blockquote>
+                        <script async src="/~/https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </section>
+                    <section>
+                        <h2>ES3-ES5&mdash;Circa 2008</h2>
+                        <div class="stretch horz-stack">
+                            <image data-src="images/book.jpg" width="500" height="656" />
+                            <blockquote>
+                                <p>Most programming languages contain good and bad parts, but <strong>JavaScript has more than its share of the bad</strong>, having been developed and <strong>released in a hurry before it could be refined</strong>...</p>
+                                <p>Considered <em>the</em> JavaScript expert by many people in the development community, author Douglas Crockford identifies the abundance of good ideas... Unfortunately, these <strong>good ideas are mixed in with bad and downright awful ideas</strong>...</p>
+                                <p>The real beauty? As you move ahead with the subset of JavaScript that this book presents, you'll also sidestep the <strong>need to unlearn all the bad parts</strong>.</p>
+                            </blockquote>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Popularity</h2>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://www.tiobe.com/tiobe-index/"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://octoverse.github.com/"></iframe>
+                    </section>
+                    <section>
+                        <h2>Maturity</h2>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/http://es6-features.org/"></iframe>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## ES6/ES2015 Favorite Features
+
+                            | Feature | Example |
+                            |---|---|
+                            | Constants | `const x = 0;` |
+                            | Block-scoping | `{ let y = 1; y++; }` |
+                            | Iterators | `for (const item of collection) { /*...*/ }` |
+                            | Arrow functions | `() => { return this.toString(); }` |
+                            | String interpolation | `` const str = `The value of 'x' is ${x}.`; `` |
+                            | Spread operator | `const shallowCopy = { ...original };` |
+                            | Classes | `class MyClass { /*...*/ }` |
+                            | Promises | `asyncOp().then(result => /*...*/);` |
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## ES2016
+                            * `Array.prototype.includes`
+                            * Exponentiation operator (`**`)
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## ES2017
+                            * `async` / `await`
+                            * Shared memory and atomics
+                            * `String.prototype.padStart(), String.prototype.padEnd()`
+                            * `Object.values()`, `Object.entries()`
+                            * `Object.getOwnPropertyDescriptors()`
+                        </textarea>
+                    </section>
+                    <section>
+                        <h2>Transpilation</h2>
+                    </section>
+                    <section>
+                        <blockquote>
+                            <p>"JavaScript is Assembly Language for the Web...and That's OK"<p>
+                        </blockquote>
+                        <img class="stretch" data-src="images/google.png" />
+                        <p>The subject of
+                            <a href="http://www.hanselman.com/blog/JavaScriptIsAssemblyLanguageForTheWebSematicMarkupIsDeadCleanVsMachinecodedHTML.aspx" target="_blank">three</a>
+                            <a href="http://www.hanselman.com/blog/JavaScriptisAssemblyLanguagefortheWebPart2MadnessorjustInsanity.aspx" target="_blank">blog</a>
+                            <a href="http://www.hanselman.com/blog/JavaScriptIsWebAssemblyLanguageAndThatsOK.aspxposts" target="_blank">posts</a>
+                            by Scott Hanselman starting in 2011</p>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## Well-Known Transpiled Languages
+                        
+                            | Language | Description |
+                            |---|---|
+                            | JavaScript | [Babel](https://babeljs.io/) and [Traceur](https://github.com/google/traceur-compiler) are downlevel transpilers |
+                            | [CoffeeScript](http://coffeescript.org/) | A languaged inspired by Ruby, Python and Haskell for brevity and readability |
+                            | [ClojureScript](https://clojurescript.org/) | A dialect of Lisp (functional language) |
+                            | [Dart](https://www.dartlang.org/) | An OO application language with C-style syntax |
+                            | [TypeScript](http://www.typescriptlang.org/) | A typed superset of JavaScript |
+                        </textarea>
+                    </section>
+                    <section>
+                        <h2>Known Transpiled Languages</h2>
+                        <div class="stretch">
+                            <languages-cloud></languages-cloud>
+                        </div>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://reasonml.github.io/"></iframe>
+                    </section>
+                </section>
+
+                <!-- TypeScript Origins -->
+                <section>
+                    <section>
+                        <h1>TypeScript Origins</h1>
+                        <h2>Language Designer</h2>
+                        <h2>Video</h2>
+                    </section>
+                    <section>
+                        <h2>Language Designer</h2>
+                    </section>
+                    <section>
+                        <h2>Anders Hejlsberg</h2>
+                        <img class="stretch" data-src="images/anders.jpg" width="1088" height="1484" />
+                    </section>
+                    <section>
+                        <h2>Borland Early Years</h2>
+                        <h3>Turbo Pascal (released in the early '80s)</h3>
+                        <ul>
+                            <li>Tool: Was the first IDE</li>
+                            <li>Tool: Generated small, fast, portable binaries</li>
+                            <li>Language: Object-oriented</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Borland Later Years</h2>
+                        <h3>Delphi (released in the mid ‘90s)</h3>
+                        <ul>
+                            <li>Tool: One of the first examples of a RAD tool (IDE &amp; visual window designer)</li>
+                            <li>Language: Added properties, events, and metaclasses as first-class concepts</li>
+                            <li>Language: Supported class and interface polymorphism along with interface delegation</li>
+                            <li>Language: Supported virtual and message-based method dispatching</li>
+                            <li>All these features combined to make both Win32 and COM programming much easier</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Microsoft Early Years</h2>
+                        <h3>Visual J++ and WFC</h3>
+                        <ul>
+                            <li>Created a single framework for Java + Win32 + DHTML</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Microsoft Middle Years</h2>
+                        <h3>C♯ (released in the early ‘00s)</h3>
+                        <ul>
+                            <li>1.0: Unified object model&mdash;everything descends from <code class="language-csharp">Object</code></li>
+                            <li class="strong">2.0: Nullable value types&mdash;value types with no value; e.g. <code class="language-csharp">int? x = null;</code></li>
+                            <li class="strong">2.0: Generics&mdash;type parameters; e.g. <code class="language-csharp">List&lt;T&gt;</code></li>
+                            <li class="strong">2.0: Iterators&mdash;auto-generation of <code class="language-csharp">IEnumerable&lt;T&gt;</code> via <code class="language-csharp">yield return x;</code></li>
+                            <li class="strong">3.0: Lambdas&mdash;a.k.a. arrow functions; anonymous, inline closures</li>
+                            <li>3.0: LINQ&mdash;declarative algorithms using function composition and chaining with an optional SQL-like syntax</li>
+                            <li class="strong">4.0: Dynamic binding&mdash;Natural COM and dynamic language interop via <code class="language-csharp">dynamic</code></li>
+                            <li class="strong">5.0: Async/Await&mdash;language-integrated continuation passing style asynchrony</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>TypeScript Stemma</h2>
+                        <img id="stemma" class="stretch" data-src="images/stemma.svg" />
+                    </section>
+                    <section>
+                        <h2>What's New in TypeScript</h2>
+                        <h3>A Talk by Anders Hejlsberg at Build 2017</h3>
+                        <a href="https://channel9.msdn.com/Events/Build/2017/B8088">https://channel9.msdn.com/Events/Build/2017/B8088</a>
+                    </section>
+                </section>
+
+                <!-- TypeScript in the Wild -->
+                <section>
+                    <section>
+                        <h1>TypeScript in the Wild</h1>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://code.visualstudio.com/"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://www.typescriptlang.org/community/friends.html"></iframe>
+                    </section>
+                    <section>
+                        <!-- Angular's site currently doesn't work going through the proxy. -->
+                        <iframe class="stretch" data-src="https://angular.io/"></iframe>
+                    </section>
+                    <section>
+                        <p>Yes, TypeScript can be used with React and Vue, too.</p>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://www.nativescript.org/"></iframe>
+                    </section>
+                    <section>
+                        <!-- TODO: The frame busting code in Lyft's site has been successfully avoided, but the embedded
+                            progressive media figures do not load. -->
+                        <iframe class="stretch" data-src="/~/https://eng.lyft.com/typescript-at-lyft-64f0702346ea"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://www.lucidchart.com/techblog/2017/11/16/converting-600k-lines-to-typescript-in-72-hours/"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://insights.stackoverflow.com/survey/2017#most-loved-dreaded-and-wanted"></iframe>
+                    </section>
+                    <section>
+                        <h2>This Presentation</h2>
+                        <div class="stretch horz-stack">
+                            <iframe class="stretch" data-src="/~/https://github.com/robertbullen/typescript-presentation"></iframe>
+                            <img src="images/repo-qrcode.svg" alt="GitHub Repository QR Code" />
+                        </div>
+                        <a href="https://github.com/robertbullen/typescript-presentation">https://github.com/robertbullen/typescript-presentation</a>
+                    </section>
+                    <section>
+                        <h2>Tech Used In This Presentation</h2>
+                        <ul>
+                            <li>Both
+                            <ul>
+                                <li><a href="http://www.typescriptlang.org/" target="_blank">TypeScript</a> programming language</li>
+                                <li><a href="https://www.npmjs.com/" target="_blank">NPM</a> package manager</li>
+                            </ul>
+                            </li>
+                            <li>Client
+                            <ul>
+                                <li>Browser + ES5 runtime environment</li>
+                                <li><a href="https://github.com/systemjs/systemjs/" target="_blank">SystemJS</a> module loader</li>
+                                <li><a href="https://github.com/hakimel/reveal.js/">Reveal.js</a> presentation framework</li>
+                                <li><a href="https://d3js.org/">D3.js</a> AJAX requestor and DOM manipulator</li>
+                                <li><a href="https://github.com/jasondavies/d3-cloud">D3-Cloud</a> word cloud visualizer</li>
+                                <li><a href="https://highlightjs.org/">Highlight.js</a> code formatter</li>
+                            </ul>
+                            </li>
+                            <li>Server
+                            <ul>
+                                <li><a href="https://nodejs.org/">Node.js</a> + ES2015 runtime environment</li>
+                                <li><a href="http://expressjs.com/">Express</a> as a web, API, and proxy server</li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## This Presentation's Goals
+                        
+                            | Goal | Score |
+                            |---|---|
+                            | Avoid switching between applications | 👍 |
+                            | Display properly formatted code excerpts without using screenshots | 👍 |
+                            | Show dynamically generated and animated visualizations | 👍 |
+                            | Perform live coding | 👍 |
+                            | Embed external web sites and widgets | 👌 |
+                            | Rewrite external web site assets to defeat frame busting | 👍 |
+                            | Cache external assets to eliminate reliance on Internet connectivity | 👌 |
+                            | Provide good samples of client and server TypeScript projects | 👉 |
+                        </textarea> 
+                    </section>
+                </section>
+
+                <!-- Considerations -->
+                <section>
+                    <section>
+                        <h1>Considerations</h1>
+                        <h2>Pros and Cons</h2>
+                        <h2>Alternatives</h2>
+                        <h2>Walled Garden Design</h2>
+                    </section>
+                    <section>
+                        <h2>Pros and Cons</h2>
+                        <table style="font-size: smaller;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%">Category</th>
+                                    <th style="width: 45%">Cons</th>
+                                    <th style="width: 45%">Pros</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Configuration</td>
+                                    <td>
+                                        <ul>
+                                            <li>One more step contributing to setup fatigue</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>One-time cost that pays for itself</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Type Definitions</td>
+                                    <td>
+                                        <ul>
+                                            <li>Required by the compiler for external libraries</li>
+                                            <li>Incomplete or unavailable for a small number of libraries</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>Are easily installed as NPM dev dependencies</li>
+                                            <li>Are easily augmented or stubbed</li>
+                                            <li>Provide package documentation</li>
+                                            <li>Ensure correct usage of APIs</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Transpilation</td>
+                                    <td>
+                                        <ul>
+                                            <li>Is an extra step in the REPL cycle</li>
+                                            <li>Transforms certain code from one paradigm to another when downleveling</li>
+                                            <li>May give false sense of type safety at run-time</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>Can be mitigated by &quot;watch mode&quot;</li>
+                                            <li>Can generate .map files for tools</li>
+                                            <li>Offers syntax checking and error detection</li>
+                                            <li>Allows you to create a walled garden</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <img class="stretch" src="images/walled-garden.svg" alt="Walled Garden" />
+                    </section>
+                    <section>
+                        <h2>Alternatives</h2>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/http://usejsdoc.org/howto-es2015-classes.html"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://flow.org/"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://npmcompare.com/compare/flow-bin,typescript"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://eng.lyft.com/typescript-at-lyft-64f0702346ea"></iframe>
+                    </section>
+                </section>
+
+                <!-- Code -->
+                <section>
+                    <section>
+                        <h1>Code</h1>
+                        <h2>Examples</h2>
+                        <h2>Getting Started</h2>
+                    </section>
+
+                    <section>
+                        <h2>Getting Started</h2>
+                    </section>
+                    <section>
+                        <iframe class="stretch" data-src="/~/https://www.typescriptlang.org/play/index.html"></iframe>
+                    </section>
+
+                    <section>
+                        <h2>Examples</h2>
+                    </section>
+                    <section>
+                        <h2>Remember This?</h2>
+                        <div class="stretch">
+                            <languages-cloud></languages-cloud>
+                        </div>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS"></iframe>
+                    </section>
+                    <section>
+                        <pre class="stretch"><code class="language-markdown" data-src="/~/https://raw.githubusercontent.com/wiki/jashkenas/coffeescript/List-of-languages-that-compile-to-JS.md"></code></pre>
+                    </section>
+                    <section>
+                        <pre class="stretch"><code class="language-typescript" data-src="/server/src/languages-service.ts"></code></pre>
+                    </section>
+                </section>
+
+                <!-- Tools & Helpers -->
+                <section>
+                    <section>
+                        <h1>Tools and Helpers</h1>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            <!-- TODO: Turn into a table and provide descriptions. -->
+                            * [ts-lint](https://palantir.github.io/tslint/)
+                            * [ts-node](https://github.com/TypeStrong/ts-node)
+                            * [ts-jest](https://github.com/kulshekhar/ts-jest)
+                            * [aws-lambda-typescript](https://github.com/stevejhiggs/aws-lambda-typescript)
+                        </textarea>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
