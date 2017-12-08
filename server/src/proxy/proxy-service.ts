@@ -121,7 +121,7 @@ export class ProxyService {
             console.log(`➡ ${redirectUrl}`);
             console.groupEnd();
 
-            res.redirect(redirectUrl);
+            res.redirect(307, redirectUrl);
         };
     }
 
@@ -142,14 +142,24 @@ export class ProxyService {
             // Create an error handler function that can be used on all participants in a stream pipe.
             const errorHandler = (error: Error) => next(error);
 
-            // Request the external resource as a stream, passing whitelisted headers through.
-            const headers: request.Headers = {};
-            for (const name of ProxyService.requestHeadersWhitelist) {
-                const value: string | undefined = req.header(name);
-                if (value) { headers[name] = value; }
+            // Initialize a request for the external resource as a stream.
+            let responseStream: stream.Readable;
+            {
+                // Pass only whitelisted headers through.
+                const headers: request.Headers = {};
+                for (const name of ProxyService.requestHeadersWhitelist) {
+                    const value: string | undefined = req.header(name);
+                    if (value) { headers[name] = value; }
+                }
+
+                // Create an options object with a read-only method property to prevent cached-request from normalizing
+                // it to GET.
+                const options: request.CoreOptions = {
+                    headers,
+                    get method(): string { return req.method; }
+                };
+                responseStream = this.requestAsStream(requestRemoteComponents.externalUrl, options).on('error', errorHandler);
             }
-            const options: request.CoreOptions = { headers };
-            let responseStream: stream.Readable = this.requestAsStream(requestRemoteComponents.externalUrl, options).on('error', errorHandler);
 
             responseStream.on('response', (response: cachedRequest.Response) => {
                 // Perform content rewriting if called for. This is done before copying headers because the
