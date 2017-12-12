@@ -19,22 +19,51 @@ Reveal.initialize({
 
     dependencies: [
         // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-        { src: System.resolveSync('reveal.js/lib/js/classList.js'), condition: () => !document.body.classList },
+        {
+            condition: () => !document.body.classList,
+            src: System.resolveSync('reveal.js/lib/js/classList.js'),
+        },
 
         // Interpret Markdown in <section> elements
-        { src: System.resolveSync('reveal.js/plugin/markdown/marked.js'), condition: () => !!document.querySelector('[data-markdown]') },
-        { src: System.resolveSync('reveal.js/plugin/markdown/markdown.js'), condition: () => !!document.querySelector('[data-markdown]') },
+        {
+            callback: () => {
+                // Customize the rendering of links so that they open in a separate tab/window.
+                // TODO: This was a quick and dirty hack. Add @types/marked and derive a custom class from Renderer.
+                window['marked'].defaults.renderer.link = (href: string, title: string, text: string): string => {
+                    return `<a href="${href}" ${title ? `title="${title}"` : ''} target="_blank">${text}</a>`;
+                };
+            },
+            condition: () => !!document.querySelector('[data-markdown]'),
+            src: System.resolveSync('reveal.js/plugin/markdown/marked.js')
+        },
+        { 
+            condition: () => !!document.querySelector('[data-markdown]'),
+            src: System.resolveSync('reveal.js/plugin/markdown/markdown.js')
+        },
 
         // Syntax highlight for <code> elements
-        { src: System.resolveSync('reveal.js/plugin/highlight/highlight.js'), async: true, callback: () => window['hljs'].initHighlightingOnLoad() },
+        {
+            async: true,
+            callback: () => window['hljs'].initHighlightingOnLoad(),
+            src: System.resolveSync('reveal.js/plugin/highlight/highlight.js')
+        },
 
         // Zoom in and out with Alt+click
-        { src: System.resolveSync('reveal.js/plugin/zoom-js/zoom.js'), async: true },
+        {
+            async: true,
+            src: System.resolveSync('reveal.js/plugin/zoom-js/zoom.js')
+        },
 
         // Speaker notes
-        // { src: System.resolveSync('reveal.js/plugin/notes/notes.js'), async: true },
+        // {
+        //     async: true,
+        //     src: System.resolveSync('reveal.js/plugin/notes/notes.js')
+        // },
 
         // MathJax
-        // { src: System.resolveSync('reveal.js/plugin/math/math.js'), async: true }
+        // {
+        //     async: true,
+        //     src: System.resolveSync('reveal.js/plugin/math/math.js')
+        // }
     ]
 });

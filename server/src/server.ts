@@ -40,13 +40,11 @@ proxyService.clearRewritesDirectory();
 proxyService.registerMiddleware(application);
 
 // Register middleware for the languages endpoint.
-const languagesService: LanguagesService = (() => {
-    function getLanguagesMarkdown(): Promise<string> {
-        const languagesMarkdownSourceUrl: string = 'https://raw.githubusercontent.com/wiki/jashkenas/coffeescript/List-of-languages-that-compile-to-JS.md';
-        return proxyService.requestAsPromise(languagesMarkdownSourceUrl);
-    }
-    return new LanguagesService(getLanguagesMarkdown, languagesUrl);
-})();
+function getLanguagesMarkdown(): Promise<string> {
+    const languagesMarkdownSourceUrl: string = 'https://raw.githubusercontent.com/wiki/jashkenas/coffeescript/List-of-languages-that-compile-to-JS.md';
+    return proxyService.requestAsPromise(languagesMarkdownSourceUrl);
+}
+const languagesService = new LanguagesService(getLanguagesMarkdown, languagesUrl);
 languagesService.registerMiddleware(application);
 
 // Redirect requests for "default" to the client subdirectory.
@@ -75,7 +73,7 @@ console.log(`Using certificate at '${certFilePath}'`);
 const keyFilePath: string = path.join(process.cwd(), 'key.pem');
 console.log(`Using private key at '${keyFilePath}'`);
 
-const httpsOptions = {
+const httpsOptions: https.ServerOptions = {
     cert: fs.readFileSync(certFilePath),
     key: fs.readFileSync(keyFilePath)
 }
@@ -83,7 +81,7 @@ const httpsOptions = {
 console.groupEnd();
 
 // Use either the PORT environment variable or a reasonable default.
-const port: number = Number.parseInt(process.env.PORT || '8443');
+const port: number = Number.parseInt(process.env.PORT || '') || 8443;
 
 // Run the HTTPS server.
 const server: https.Server = https.createServer(httpsOptions, application as any);

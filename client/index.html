@@ -80,8 +80,8 @@
 
                             > **Any host. Any browser. Any OS.** Open Source.
 
-                            TypeScript projects can target these platforms (and others):
-
+                            TypeScript projects can run anywhere JavaScript can, including:
+                            
                             * Web/app/API servers
                             * Microservices
                             * Serverless cloud functions
@@ -102,6 +102,9 @@
                             > TypeScript is a superset of JavaScript that **compiles to plain JavaScript**.
 
                             > **Any host. Any browser. Any OS.** Open Source.
+
+
+                            TypeScript has zero run-time overhead:
 
                             * No run-time libraries are needed
                             * No run-time type safety checks are performed
@@ -149,28 +152,34 @@
                     <section>
                         <h2>Wat</h2>
                         <h3>A lightning talk by Gary Bernhardt from CodeMash 2012</h3>
-                        <p><a href="https://www.destroyallsoftware.com/talks/wat">https://www.destroyallsoftware.com/talks/wat</a></p>
+                        <p><a href="https://www.destroyallsoftware.com/talks/wat" target="_blank">https://www.destroyallsoftware.com/talks/wat</a></p>
+                    </section>
+                    <!-- TODO: Remove -->
+                    <section data-background-video="/private/videos/wat-edited.mp4" data-background-size="contain">
                     </section>
                     <section>
                         <h2>The Birth &amp; Death of JavaScript</h2>
                         <h3>A talk by Gary Bernhardt from PyCon 2014</h3>
-                        <p><a href="https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript">https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript</a></p>
+                        <p><a href="https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript" target="_blank">https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript</a></p>
+                    </section>
+                    <!-- TODO: Remove -->
+                    <section data-background-video="/private/videos/the-birth-and-death-of-javascript-edited.mp4" data-background-size="contain">
                     </section>
                     <section>
                         <h2>Callback Hell</h2>
                         <blockquote class="stretch twitter-tweet" data-lang="en" data-align="center">
                             <p lang="und" dir="ltr">
-                                <a href="/~/https://twitter.com/hashtag/hadoukindentation?src=hash">#hadoukindentation</a>
-                                <a href="/~/https://twitter.com/hashtag/if?src=hash">#if</a>
-                                <a href="/~/https://twitter.com/hashtag/andthatsaBIGif?src=hash">#andthatsaBIGif</a>
-                                <a href="/~/https://t.co/suIVXY9u0W">pic.twitter.com/suIVXY9u0W</a>
+                                <a href="https://twitter.com/hashtag/hadoukindentation?src=hash" target="_blank">#hadoukindentation</a>
+                                <a href="https://twitter.com/hashtag/if?src=hash" target="_blank">#if</a>
+                                <a href="https://twitter.com/hashtag/andthatsaBIGif?src=hash" target="_blank">#andthatsaBIGif</a>
+                                <a href="https://t.co/suIVXY9u0W" target="_blank">pic.twitter.com/suIVXY9u0W</a>
                             </p>
-                            &mdash; cloudshark ⛅ (@cloudshark) <a href="/~/https://twitter.com/cloudshark/status/775778843839922176">September 13, 2016</a>
+                            &mdash; cloudshark ⛅ (@cloudshark) <a href="https://twitter.com/cloudshark/status/775778843839922176" target="_blank">September 13, 2016</a>
                         </blockquote>
                         <script async src="/~/https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </section>
                     <section>
-                        <h2>ES3-ES5&mdash;Circa 2008</h2>
+                        <h2>ES3&ndash;ES5&mdash;Circa 2008</h2>
                         <div class="stretch horz-stack">
                             <image data-src="images/book.jpg" width="500" height="656" />
                             <blockquote>
@@ -192,6 +201,13 @@
                     <section>
                         <h2>Maturity</h2>
                     </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## ES3&ndash;ES5
+
+                            Immature!
+                        </textarea>
+                    </section>
                     <section>
                         <iframe class="stretch" data-src="/~/http://es6-features.org/"></iframe>
                     </section>
@@ -207,7 +223,7 @@
                             | Arrow functions | `() => { return this.toString(); }` |
                             | String interpolation | `` const str = `The value of 'x' is ${x}.`; `` |
                             | Spread operator | `const shallowCopy = { ...original };` |
-                            | Classes | `class MyClass { /*...*/ }` |
+                            | Classes | `class MyClass { get prop() { /*...*/ } }` |
                             | Promises | `asyncOp().then(result => /*...*/);` |
                         </textarea>
                     </section>
@@ -215,7 +231,7 @@
                         <textarea data-template>
                             ## ES2016
                             * `Array.prototype.includes`
-                            * Exponentiation operator (`**`)
+                            * `**` (exponentiation operator)
                         </textarea>
                     </section>
                     <section data-markdown>
@@ -223,7 +239,7 @@
                             ## ES2017
                             * `async` / `await`
                             * Shared memory and atomics
-                            * `String.prototype.padStart(), String.prototype.padEnd()`
+                            * `String.prototype.padStart()`, `String.prototype.padEnd()`
                             * `Object.values()`, `Object.entries()`
                             * `Object.getOwnPropertyDescriptors()`
                         </textarea>
@@ -328,7 +344,10 @@
                     <section>
                         <h2>What's New in TypeScript</h2>
                         <h3>A Talk by Anders Hejlsberg at Build 2017</h3>
-                        <a href="https://channel9.msdn.com/Events/Build/2017/B8088">https://channel9.msdn.com/Events/Build/2017/B8088</a>
+                        <a href="https://channel9.msdn.com/Events/Build/2017/B8088" target="_blank">https://channel9.msdn.com/Events/Build/2017/B8088</a>
+                    </section>
+                    <!-- TODO: Remove -->
+                    <section data-background-video="/private/videos/build-2017-typescript-edited.mp4" data-background-size="contain">
                     </section>
                 </section>
 
@@ -367,10 +386,10 @@
                     <section>
                         <h2>This Presentation</h2>
                         <div class="stretch horz-stack">
-                            <iframe class="stretch" data-src="/~/https://github.com/robertbullen/typescript-presentation"></iframe>
-                            <img src="images/repo-qrcode.svg" alt="GitHub Repository QR Code" />
+                            <iframe data-src="/~/https://github.com/robertbullen/typescript-presentation"></iframe>
+                            <img src="images/typescript-presentation-repo-qrcode.svg" alt="Repo QR Code" />
                         </div>
-                        <a href="https://github.com/robertbullen/typescript-presentation">https://github.com/robertbullen/typescript-presentation</a>
+                        <a href="https://github.com/robertbullen/typescript-presentation" target="_blank">https://github.com/robertbullen/typescript-presentation</a>
                     </section>
                     <section>
                         <h2>Tech Used In This Presentation</h2>
@@ -385,35 +404,44 @@
                             <ul>
                                 <li>Browser + ES5 runtime environment</li>
                                 <li><a href="https://github.com/systemjs/systemjs/" target="_blank">SystemJS</a> module loader</li>
-                                <li><a href="https://github.com/hakimel/reveal.js/">Reveal.js</a> presentation framework</li>
-                                <li><a href="https://d3js.org/">D3.js</a> AJAX requestor and DOM manipulator</li>
-                                <li><a href="https://github.com/jasondavies/d3-cloud">D3-Cloud</a> word cloud visualizer</li>
-                                <li><a href="https://highlightjs.org/">Highlight.js</a> code formatter</li>
+                                <li><a href="https://github.com/hakimel/reveal.js/" target="_blank">Reveal.js</a> presentation framework</li>
+                                <li><a href="https://d3js.org/" target="_blank">D3.js</a> AJAX requestor and DOM manipulator</li>
+                                <li><a href="https://github.com/jasondavies/d3-cloud" target="_blank">D3-Cloud</a> word cloud visualizer</li>
+                                <li><a href="https://highlightjs.org/" target="_blank">Highlight.js</a> code formatter</li>
                             </ul>
                             </li>
                             <li>Server
                             <ul>
-                                <li><a href="https://nodejs.org/">Node.js</a> + ES2015 runtime environment</li>
-                                <li><a href="http://expressjs.com/">Express</a> as a web, API, and proxy server</li>
+                                <li><a href="https://nodejs.org/" target="_blank">Node.js</a> + ES2015 runtime environment</li>
+                                <li><a href="http://expressjs.com/" target="_blank">Express</a> as a web, API, and proxy server</li>
+                                <li><a href="https://github.com/alltherooms/cached-request" target="_blank">Cached Request</a> for caching web resources</li>
                             </ul>
                             </li>
                         </ul>
                     </section>
                     <section data-markdown>
                         <textarea data-template>
-                            ## This Presentation's Goals
-                        
-                            | Goal | Score |
+                            ## Presentation Goals
+
+                            | Goal | Rating |
                             |---|---|
                             | Avoid switching between applications | 👍 |
-                            | Display properly formatted code excerpts without using screenshots | 👍 |
-                            | Show dynamically generated and animated visualizations | 👍 |
-                            | Perform live coding | 👍 |
+                            | Avoid resorting to screenshots | 👍 |
+                            | Display syntax highlighted code without copy/paste | 👍 |
                             | Embed external web sites and widgets | 👌 |
                             | Rewrite external web site assets to defeat frame busting | 👍 |
                             | Cache external assets to eliminate reliance on Internet connectivity | 👌 |
+                            | Show dynamically generated and animated visualizations | 👍 |
                             | Provide good samples of client and server TypeScript projects | 👉 |
                         </textarea> 
+                    </section>
+                    <section>
+                        <h2>Presentation Architecture</h2>
+                        <img class="stretch" src="/doc/architecture.svg" alt="Project Architecture" />
+                    </section>
+                    <section>
+                        <h2>Presentation Proxy Pipeline</h2>
+                        <img class="stretch" src="/doc/pipeline.svg" alt="Proxy Pipeline" />
                     </section>
                 </section>
 
@@ -421,9 +449,24 @@
                 <section>
                     <section>
                         <h1>Considerations</h1>
-                        <h2>Pros and Cons</h2>
                         <h2>Alternatives</h2>
+                        <h2>Pros and Cons</h2>
                         <h2>Walled Garden Design</h2>
+                    </section>
+                    <section>
+                        <h2>Alternatives</h2>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/http://usejsdoc.org/howto-es2015-classes.html"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://flow.org/"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://npmcompare.com/compare/flow-bin,typescript"></iframe>
+                    </section>
+                    <section>
+                        <iframe class="stretch" src="/~/https://eng.lyft.com/typescript-at-lyft-64f0702346ea"></iframe>
                     </section>
                     <section>
                         <h2>Pros and Cons</h2>
@@ -490,29 +533,15 @@
                     <section>
                         <img class="stretch" src="images/walled-garden.svg" alt="Walled Garden" />
                     </section>
-                    <section>
-                        <h2>Alternatives</h2>
-                    </section>
-                    <section>
-                        <iframe class="stretch" src="/~/http://usejsdoc.org/howto-es2015-classes.html"></iframe>
-                    </section>
-                    <section>
-                        <iframe class="stretch" src="/~/https://flow.org/"></iframe>
-                    </section>
-                    <section>
-                        <iframe class="stretch" src="/~/https://npmcompare.com/compare/flow-bin,typescript"></iframe>
-                    </section>
-                    <section>
-                        <iframe class="stretch" src="/~/https://eng.lyft.com/typescript-at-lyft-64f0702346ea"></iframe>
-                    </section>
                 </section>
 
                 <!-- Code -->
                 <section>
                     <section>
-                        <h1>Code</h1>
-                        <h2>Examples</h2>
+                        <h1>Coding</h1>
                         <h2>Getting Started</h2>
+                        <h2>Tools and Helpers</h2>
+                        <h2>Examples</h2>
                     </section>
 
                     <section>
@@ -520,6 +549,75 @@
                     </section>
                     <section>
                         <iframe class="stretch" data-src="/~/https://www.typescriptlang.org/play/index.html"></iframe>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## Starting a new TypeScript Project
+
+                            * Create a new NPM project and install TypeScript as a dev dependency:
+
+                                ```bash
+                                npm init
+                                npm install typescript --save-dev
+                                ```
+
+                            * When installed locally, the TypeScript compiler is found at `./node_modules/.bin/tsc`.
+                            To make it available via `npm run tsc`, add a script to _package.json_:
+
+                                ```json
+                                { "scripts": {
+                                    "tsc": "tsc"
+                                } }
+                                ```
+                        </textarea>
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                            ## Starting a new TypeScript Project
+
+                            * Create a _tsconfig.json_ file for maintaining compiler settings:
+
+                                ```bash
+                                npm run tsc -- --init
+                                ```
+
+                            * Install type definitions for dependencies:
+
+                                ```bash
+                                npm install @types/node @types/express --save-dev
+                                ```
+
+                            * Set the project's start scripts, perhaps handling development and production differently:
+
+                                ```json
+                                { "scripts": {
+                                    "start-dev": "ts-node index.ts",
+                                    "start": "tsc && node index.js"
+                                } }
+                                ```
+                        </textarea>
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                             ## Tools and Helpers
+
+                             | Tool | Description |
+                             |---|---|
+                             | [ts-lint](https://palantir.github.io/tslint/) | An extensible static analysis tool that checks TypeScript code for readability, maintainability, and functionality errors. |
+                             | [ts-node](https://github.com/TypeStrong/ts-node) | TypeScript execution environment and REPL for node. |
+                             | [ts-jest](https://github.com/kulshekhar/ts-jest) | A preprocessor with source map support for Jest that lets you use Jest to test projects written in TypeScript. |
+                             | [aws-lambda-typescript](https://github.com/stevejhiggs/aws-lambda-typescript) | A build pipeline for easily building AWS lambda functions with TypeScript. |
+                         </textarea>
+                    </section>
+
+                    <section>
+                        <h2>Getting Started with an Existing Project</h2>
+                        <div class="stretch horz-stack">
+                            <iframe src="/~/https://github.com/robertbullen/javascript-to-typescript"></iframe>
+                            <img src="images/javascript-to-typescript-repo-qrcode.svg" alt="Repo QR Code" />
+                        </div>
+                        <a href="https://github.com/robertbullen/javascript-to-typescript" target="_blank">https://github.com/robertbullen/javascript-to-typescript</a>
                     </section>
 
                     <section>
@@ -532,29 +630,23 @@
                         </div>
                     </section>
                     <section>
+                        <h2>Presentation Architecture</h2>
+                        <img class="stretch" src="/doc/architecture.svg" alt="Project Architecture" />
+                    </section>
+                    <section>
                         <iframe class="stretch" src="/~/https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS"></iframe>
                     </section>
                     <section>
+                        <p>List-of-languages-that-compile-to-JS.md</p>
                         <pre class="stretch"><code class="language-markdown" data-src="/~/https://raw.githubusercontent.com/wiki/jashkenas/coffeescript/List-of-languages-that-compile-to-JS.md"></code></pre>
                     </section>
                     <section>
-                        <pre class="stretch"><code class="language-typescript" data-src="/server/src/languages-service.ts"></code></pre>
+                        <p>server.ts</p>
+                        <pre class="stretch"><code class="language-typescript" data-src="/server/src/server.ts"></code></pre>
                     </section>
-                </section>
-
-                <!-- Tools & Helpers -->
-                <section>
                     <section>
-                        <h1>Tools and Helpers</h1>
-                    </section>
-                    <section data-markdown>
-                        <textarea data-template>
-                            <!-- TODO: Turn into a table and provide descriptions. -->
-                            * [ts-lint](https://palantir.github.io/tslint/)
-                            * [ts-node](https://github.com/TypeStrong/ts-node)
-                            * [ts-jest](https://github.com/kulshekhar/ts-jest)
-                            * [aws-lambda-typescript](https://github.com/stevejhiggs/aws-lambda-typescript)
-                        </textarea>
+                        <p>languages-service.ts</p>
+                        <pre class="stretch"><code class="language-typescript" data-src="/server/src/languages-service.ts"></code></pre>
                     </section>
                 </section>
             </div>

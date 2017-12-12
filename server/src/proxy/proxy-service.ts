@@ -46,15 +46,15 @@ export class ProxyService {
     /**
      * Empties the cache directory maintained by this proxy.
      */
-    public clearCacheDirectory(): void {
-        return fsep.emptyDirSync(this.config.cache.directoryPath);
+    public clearCacheDirectory(): Promise<void> {
+        return fsep.emptyDir(this.config.cache.directoryPath);
     }
 
     /**
      * Empties the rewrites directory maintained by this proxy.
      */
-    public clearRewritesDirectory(): void {
-        return fsep.emptyDirSync(this.config.rewrites.directoryPath);
+    public clearRewritesDirectory(): Promise<void> {
+        return fsep.emptyDir(this.config.rewrites.directoryPath);
     }
 
     /**

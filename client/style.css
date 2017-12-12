@@ -70,6 +70,18 @@ strong,
     vertical-align: top;
 }
 
+/*
+ * Embedded sites might assume a default white background.
+ */
+
+.reveal iframe {
+    background-color: white;
+}
+
+/*
+ * Create a class for horizontal flex layouts.
+ */
+
 .horz-stack {
     align-items: center;
     display: flex;
